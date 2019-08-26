@@ -5,11 +5,11 @@ const helmet = require( 'helmet' );
 const morgan = require( 'morgan' );
 const cors = require( 'cors' );
 const server = express();
-//const restricted = require( '../routers/auth/restricted' );
+const restricted = require( '../routers/auth/restricted' );
 
 //GETTING ROUTES ⬇︎
-// const stepsRoute = require( '../routers/manager/managerRouter' );
-// const userRoute = require( '../routers/auth/authRouter' );
+ const managerRoute = require( '../routers/manager/managerRouter' );
+const userRoute = require( '../routers/auth/authRouter' );
 
 //GLOBAL MIDDLEWARE ⬇︎
 server.use( express.json());
@@ -18,8 +18,8 @@ server.use( morgan('dev'));
 server.use( cors());
 
 //APPLYING ROUTES ⬇︎
-// server.use( '/api/manager' , managerRoute , restricted );
-// server.use( '/api/users' , userRoute );
+ //server.use( '/api/manager' , managerRoute , restricted );
+ server.use( '/api/users' , userRoute );
 
 //SANITY CHECk ⬇︎
 server.get( '/' , ( req , res ) => {
